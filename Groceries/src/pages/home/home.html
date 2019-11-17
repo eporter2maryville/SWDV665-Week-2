@@ -1,46 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding>
+    
+    <ion-item-sliding  *ngFor="let item of items">
       <ion-item>
-        <h2>Milk</h2>
-        <p>2</p>
+        <h2>{{item.name}}</h2>
+        <p>{{item.quantity}}</p>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="secondary" icon-start>
+        <button (click)="removeItem(item)" ion-button color="secondary" icon-start>
           <ion-icon name="trash"></ion-icon>
           Done
         </button>
       </ion-item-options>
     </ion-item-sliding>
-    <ion-item-sliding>
-        <ion-item>
-          <h2>Bread</h2>
-          <p>2</p>
-        </ion-item>
-        <ion-item-options>
-          <button ion-button color="secondary" icon-start>
-            <ion-icon name="trash"></ion-icon>
-            Done
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>  
-      <ion-item-sliding>
-        <ion-item>
-          <h2>Eggs</h2>
-          <p>18</p>
-        </ion-item>
-        <ion-item-options>
-          <button ion-button color="secondary" icon-start>
-            <ion-icon name="trash"></ion-icon>
-            Done
-          </button>
-        </ion-item-options>
-      </ion-item-sliding> 
 </ion-list> 
+<ion-fab bottom right>
+  <button (click)="addItem()" ion-fab mini><ion-icon name="add"></ion-icon></button>
+</ion-fab>
 </ion-content>
