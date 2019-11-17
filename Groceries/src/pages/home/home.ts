@@ -55,11 +55,11 @@ export class HomePage {
       message: "Please enter the item name and quantity you would like adde to your grocery list",
       inputs: [
         {
-          name: 'Item Name',
+          name: 'name',
           placeholder: 'Bananas'
         },
         {
-          name: 'Item Quantity',
+          name: 'quantity',
           placeholder: '1'
         },
       ],
