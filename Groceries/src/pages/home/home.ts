@@ -15,19 +15,19 @@ export class HomePage {
   items = [
     {
       name: "Milk",
-      quantity: 2    
+      quantity: 2
     },
     {
       name: "Bread",
-      quantity: 1    
+      quantity: 1
     },
     {
       name: "Banana",
-      quantity: 3    
+      quantity: 3
     },
     {
       name: "Sugar",
-      quantity: 1    
+      quantity: 1
     },
   ];
 
@@ -43,14 +43,25 @@ export class HomePage {
     });
     toast.present();
 
-    this.items.splice(index,1);
+    this.items.splice(index, 1);
+  }
+
+  editItem(item, index) {
+    console.log("Editing an Item - ", item, index);
+    const toast = this.toastCtrl.create({
+      message: 'Editing Item - ' + index + " ...",
+      duration: 3000
+    });
+    toast.present(),
+    this.showEditItemPrompt(item, index);
+
   }
 
   addItem() {
     console.log("Adding an item to list");
     this.showAddItemPrompt();
   }
-  
+
   showAddItemPrompt() {
     const prompt = this.alertCtrl.create({
       title: "Add Item to List",
@@ -77,6 +88,41 @@ export class HomePage {
           handler: item => {
             console.log('Saved Clicked', item);
             this.items.push(item);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  showEditItemPrompt(item, index) {
+    const prompt = this.alertCtrl.create({
+      title: "Edit the selected item",
+      message: "Please update the name or quantitiy of the item in your grocery list",
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Bananas',
+          value:item.name
+        },
+        {
+          name: 'quantity',
+          placeholder: '1',
+          value: item.quantity
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log("Cancel Clicked");
+          }
+        },
+        {
+          text: 'Save',
+          handler: item => {
+            console.log('Saved Clicked', item);
+            this.items[index] = item;
           }
         }
       ]
