@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content padding>
+  <h3 text-center *ngIf="loadItems().length ===0">
+    Please add your groceries to the list!
+  </h3>
   <ion-list>
 
-    <ion-item-sliding *ngFor="let item of items; let i = index">
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <ion-item>
         <h2>{{item.name}}</h2>
         <p>{{item.quantity}}</p>

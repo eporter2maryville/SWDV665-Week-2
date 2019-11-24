@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+/*import { HttpClient } from '@angular/common/http';*/
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,8 +10,26 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GroceriesServiceProvider {
 
-  constructor(public http: HttpClient) {
+  items = [];
+  
+  constructor() {
     console.log('Hello GroceriesServiceProvider Provider');
+  }
+
+  getItems() {
+    return this.items;
+  }
+
+  removeItem(index) {
+    this.items.splice(index, 1);
+  }
+
+  addItem(item) {
+    this.items.push(item);
+  }
+
+  editItem(item, index) {
+    this.items[index] = item;
   }
 
 }

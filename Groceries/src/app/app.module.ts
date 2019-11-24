@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GroceriesServiceProvider } from '../providers/groceries-service/groceries-service';
+import { InputDialogServiceProvider } from '../providers/input-dialog-service/input-dialog-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { GroceriesServiceProvider } from '../providers/groceries-service/groceri
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GroceriesServiceProvider
+    GroceriesServiceProvider,
+    InputDialogServiceProvider
   ]
 })
 export class AppModule {}
