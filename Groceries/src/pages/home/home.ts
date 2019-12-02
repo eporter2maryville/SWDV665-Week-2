@@ -43,7 +43,7 @@ export class HomePage {
     });
     toast.present();
 
-    let message = "Grocer item - Name: " + item.Name + " - Quantity: " + item.Quantity;
+    let message = "Grocer item - Name: " + item.name + " - Quantity: " + item.quantity;
     let subject = "Shared via Groceries App!"
     this.SocialSharing.share(message, subject).then(() => {
       //sharing via email is possible
