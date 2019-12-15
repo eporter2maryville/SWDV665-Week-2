@@ -14,11 +14,28 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class HomePage {
 
   title = "Grocery";
+  items = [];
+  errorMessage: string;
 
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public dataService: GroceriesServiceProvider, public InputDialogService: InputDialogServiceProvider, public SocialSharing: SocialSharing) {
+  constructor(public navCtrl: NavController, 
+    public toastCtrl: ToastController, 
+    public alertCtrl: AlertController, 
+    public dataService: GroceriesServiceProvider, 
+    public InputDialogService: InputDialogServiceProvider, 
+    public SocialSharing: SocialSharing,){
+    dataService.dataChanged$.subscribe((dataChanged:boolean) => {
+      this.loadItems();
+    });
 
   }
+
+ionViewDidLoad(){
+  this.dataService.getItems()
+  .subscribe(
+    items =>this.items = items,
+    error =>this.errorMessage = <any>error);
+}
 
   loadItems() {
     return this.dataService.getItems();
