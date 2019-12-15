@@ -42,7 +42,7 @@ export class InputDialogServiceProvider {
         {
           text: 'Save',
           handler: item => {
-            console.log('Saved Clicked', item);
+            console.log('Save Clicked', item);
             if (index !== undefined) {
               this.dataService.editItem(item, index);
             }
